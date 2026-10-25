@@ -1,0 +1,15 @@
+name: job-log
+on:
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set carrier
+        uses: ./.github/actions/job-log
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
